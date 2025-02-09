@@ -1,0 +1,58 @@
+<div class="container mt-5">
+    <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+    <div class="card" style="width: 35cm;">
+    <div class="card-body text-center">
+    <span class="title">Lista de Estrellas</span>
+    <button class="btn btn-primary float-end btn-lg" routerLink="/admin/createestrellas" >Crear Producto</button>
+        <p>Busca tu estrella aqui : 
+            <input type="search" name="busqueda" placeholder="Id o Precio.." #searchInput>
+            <input type="submit" (click)="searchEstrellaPrecio(searchInput.value)" value="Buscar Precio">
+            <input type="submit" (click)="searchEstrellaPrecio(searchInput.value)" value="Buscar ID">
+        </p>   
+     
+    <table *ngIf="listar && listEstrellas.length > 0" class="table table-dark table-striped table table-hover table-responsive mt-5">
+    <thead>
+    <tr>
+    <th scope="col">Nombre</th>
+    <th scope="col">ID</th>
+    <th scope="col">Tipo espectral</th>
+    <th scope="col">Luminosidad</th>
+    <th scope="col">Distancia</th>
+    <th scope="col">Masa</th>
+    <th scope="col">Radio</th>
+    <th scope="col">Edad</th>
+    <th scope="col">Constelacion</th>
+    <th scope="col">Precio</th>
+    <th scope="col">Cantidad</th>
+    <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let estrella of listEstrellas">
+    <td>{{ estrella.nombre }}</td>
+    <td>{{ estrella._id }}</td>
+    <td>{{ estrella.tipo_espectral }}</td>
+    <td>{{ estrella.luminosidad }}</td>
+    <td>{{ estrella.distancia }}</td>
+    <td>{{ estrella.masa }}</td>
+    <td>{{ estrella.radio }}</td>
+    <td>{{ estrella.edad }}</td>
+    <td>{{ estrella.constelacion }}</td>
+    <td>{{ estrella.precio | currency: '€'}}</td>
+    <td>{{ estrella.cantidad }}</td>
+    <td>
+    <i [routerLink]="['/admin/editestrellas',estrella._id ]" class="fas fa-pen-fancy text-info"></i>
+    <i (click)="deleteEstrella(estrella._id)" class="f	fas fa-trash-alt text-danger" ></i>  
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <h5 class="no-available" *ngIf="listEstrellas.length == 0">No hay productos disponibles</h5>
+    <button type="reset" onClick="window.location.reload()">Back</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+

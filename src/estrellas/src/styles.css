@@ -1,0 +1,17 @@
+
+body {
+    background:rgb(0, 0, 0);
+    background: radial-gradient(circle at 10% 10%, #3c0064 5%, transparent 50%), radial-gradient(circle at 90% 90%, #3b328d 5%, transparent 50%);
+    margin: 20px;
+    padding: 350px;
+    border-width: 7px;
+    border-right-style:  dotted;
+    border-left-style: dotted;
+    border-top-style:  dotted;
+    border-bottom-style: dotted;
+  }
+  
+    .title {
+    font-size: 1.8rem;
+    font-family: 'Open Sans', sans-serif;
+    }

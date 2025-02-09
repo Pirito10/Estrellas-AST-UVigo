@@ -1,0 +1,70 @@
+<div class="container mt-5">
+    <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+    <div class="card" style="width: 35cm;">
+    <div class="card-body text-center">
+    <span class="title">Lista de Usuarios</span>
+    <button class="btn btn-primary float-end btn-lg" routerLink="/admin/createusuarios/">Registrar Usuario</button>
+        <p>Busque su usario : 
+            <input type="search" name="busqueda" placeholder="Introduzca ID" #searchInput>
+            <input type="submit" (click)="searchUsuarioId(searchInput.value)" value="Buscar">
+        </p>   
+
+    <form class="mt-3" [formGroup]="ListUsuariosForm" (ngSubmit)="listar()">
+        
+        <div class="mb-3">
+       <select formControlName="rol" class="form-control form-control-lg">
+         <option value="" disabled selected>Listar:</option>
+         <option value="admin">Administrador</option>
+         <option value="cliente">Cliente</option>
+         <option value="usuarios">Todos los usuarios</option>
+       </select>
+    </div>
+    <button type="submit" class="btn btn-success btn-lg float-end"  >Listar</button>
+    </form>
+
+    <table *ngIf="!this.busqueda && this.muestra_tabla && listUsuarios.length > 0" class="table table-dark table-striped table table-hover table-responsive mt-5">
+    <thead>
+    <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Rol</th>
+    <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let usuario of listUsuarios">
+    <td>{{ usuario._id }}</td>
+    <td>{{ usuario.rol }}</td>
+    <td>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <table *ngIf="this.busqueda && !this.muestra_tabla && listUsuarios.length > 0" class="table table-dark table-striped table table-hover table-responsive mt-5">
+        <thead>
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Rol</th>
+        <th scope="col"></th>
+        
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let usuario of listUsuarios">
+        <td>{{ usuario._id }}</td>
+        <td>{{ usuario.rol }}</td>   
+        <td>    
+            <i (click)="deleteUsuario(usuario._id)" class="f	fas fa-trash-alt text-danger" ></i>
+        </td>
+         
+        </tr>
+        </tbody>
+        </table>
+    <h5 class="no-available" *ngIf=" this.muestra_tabla && listUsuarios.length == 0">No existe dicho usuario</h5>
+    <button onclick="window.location.reload()">Back</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+

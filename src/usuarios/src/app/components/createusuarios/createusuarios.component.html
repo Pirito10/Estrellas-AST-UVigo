@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="col-lg-6 offset-lg-3">
+    <div class="card">
+    <div class="card-body text-center">
+    <span class="title">REGISTRAR USUARIO</span>
+    <form class="mt-3" [formGroup]="usuariosForm" (ngSubmit)="addusuarios()">
+        
+   <div class="mb-3">
+  <select formControlName="rol" class="form-control form-control-lg">
+    <option value="" disabled selected>Seleccione un rol</option>
+    <option value="admin">Administrador</option>
+    <option value="cliente">Cliente</option>
+  </select>
+
+  <div class="text-danger" *ngIf="usuariosForm.get('rol')?.invalid && (usuariosForm.get('rol')?.touched)">
+    <span *ngIf="usuariosForm.get('rol')?.hasError('required')">El rol es obligatorio</span>
+  </div>
+</div>
+
+
+    <div class="mb-3">
+    <button routerLink="/admin" class="btn btn-secondary btn-lg float-start">Back</button>
+    <button type="submit" [disabled]="usuariosForm.invalid" class="btn btn-success btn-lg float-end">Save</button>
+    </div>
+
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+

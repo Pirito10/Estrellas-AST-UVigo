@@ -1,0 +1,72 @@
+<div class="container mt-5">
+    <div class="col-lg-6 offset-lg-3">
+    <div class="card">
+    <div class="card-body text-center">
+    <span class="title">{{ title | uppercase }}</span>
+    <form class="mt-3" [formGroup]="estrellasForm" (ngSubmit)="addestrellas()">
+    <div class="mb-3">
+    <input type="text" formControlName="nombre" class="form-control form-control-lg" [value]="nombre_2" placeholder='Nombre'>
+    <div class="text-danger" *ngIf="estrellasForm.get('nombre')?.hasError('required') && estrellasForm.get('nombre')?.touched">
+    <span>El nombre es obligatorio</span>
+    </div>
+    </div>
+    
+    <div class="mb-3">
+    <input type="text" formControlName="tipo_espectral" class="form-control form-control-lg" [value]="tipo_espectral_2" placeholder='Tipo Espectral'>
+ 
+    </div> 
+    
+    <div class="mb-3">
+    <input type="text" formControlName="luminosidad" class="form-control form-control-lg" [value]="luminosidad_2" placeholder='Luminosidad'>
+    </div>
+
+    <div class="mb-3">
+    <input type="text" formControlName="distancia" class="form-control form-control-lg" [value]="distancia_2" placeholder='Distancia'>
+    </div>
+
+    <div class="mb-3">
+    <input type="text" formControlName="masa" class="form-control form-control-lg" [value]="masa_2" placeholder='Masa'>
+    </div>
+
+    <div class="mb-3">
+    <input type="text" formControlName="radio" class="form-control form-control-lg" [value]="radio_2" placeholder='Radio'>
+    </div>
+
+    <div class="mb-3">
+    <input type="text" formControlName="edad" class="form-control form-control-lg" [value]="edad_2" placeholder='Edad'>
+    </div>
+
+    <div class="mb-3">
+    <input type="text" formControlName="constelacion" class="form-control form-control-lg" [value]="constelacion_2" placeholder='Constelacion'>
+    </div>
+    
+    
+    <div class="mb-3">
+    <input type="number" formControlName="precio" class="form-control form-control-lg" [value]="precio_2" placeholder='Precio'>
+    <div class="text-danger" *ngIf="estrellasForm.get('precio')?.hasError('required') && estrellasForm.get('precio')?.touched">
+    <span>El precio es obligatorio</span>
+    </div>
+    </div>
+    
+    <div class="mb-3">
+    <input type="text" formControlName="cantidad" class="form-control form-control-lg" [value]="cantidad_2" placeholder='Cantidad'>
+    <div class="text-danger" *ngIf="estrellasForm.get('cantidad')?.hasError('required') && estrellasForm.get('cantidad')?.touched">
+    <span>La cantidad es obligatoria</span>
+    </div>
+    </div>
+
+    <div class="mb-3">
+    <button routerLink="/admin" class="btn btn-secondary btn-lg float-start">Back</button>
+    <button type="submit" [disabled]="estrellasForm.invalid" class="btn btn-success btn-lg float-end">Save</button>
+    </div>
+
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
